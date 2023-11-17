@@ -1,0 +1,13 @@
+version: '3'
+services:
+  vault:
+    image: hashicorp/vault:1.15.2
+    command:
+      - server
+      - -dev
+      - -dev-root-token-id=root
+    volumes:
+      - ./init.sh:/bin/init.sh:ro
+    environment:
+      - VAULT_TOKEN=root
+      - VAULT_ADDR=http://127.0.0.1:8200

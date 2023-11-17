@@ -1,0 +1,35 @@
+{
+    "__ia_config__": {
+        "PublicSecret": "G+4FEdWkkfFrJKbb4OXMuSRJkvxvAE8VmYkoBgsXx+bM16j3y6fAkugKeJsrwaCAsAFnGogHbBPgNKjeTtwizDOCjV31D3Ut5uu3U3+bL4BwStJ4ebX/nl7Znwpgv7IG8fd+oYlTEzgBrEDLz5fTkZcvXXUy+QzRcNxH+tWkUp2dzGFF/z7SH9sD1UMbb/y3EQFipA/fwjmXgrijgHelZZvhy86LnwYPJI/F9Ekf2zB+XFOro5Vll+JTsZxYLqPt3iNUVURNeLqgf7qS5WlbAGnuhrrKne4s583HxYPrN6OungFnzx7xTB5KoHl/PpDQ/F6wrhHlQVN19OkM23Uu502tltdlu9sblqOM31dmi8ly7CnfMVEUg+/3EgmPOW0FLXneVp7BDgXQfMFPKTEED2TiagRYRZXxY9cj9A5VMOD0eJZf0Ghd0CkLOKskS9lyX8Sj1eIsLEOO0RERl9fBsdRPPAQFmJb9tJ7Hw081OdwqFIUpAssQ7qyTtM/jZBVH7SUlm1K698NU9r9+gmgFnE2EmvyxpM7YwmiAmH96KUrcxnNOYlWTAD5EvXJpw1QNOcr1/H6eBcuQP+44wnVBZHjCBCUNRwedNZeHIWTgDbNYStpAKTcNxk/8Y22qdTIth+UC0GHIc05e5RAPWBqYZ4GEQDW2MB8CkF5bnOwwRIITSslnX0y45q587he9as4CpzQHbJWQMqUV30PplSmKdh+d9Fu1dzpLQPidKb7pBHI0s11nxcMBm/2C8Irc8GGCMZIaig+LlQUgQdsnomBe72N1q6GEAP6WSUJ8ZK/l68XrxB0WD+0xvj8UHp2cb2905XwOQ+v26cGu4pgJt6qjtJrpchcxPDuctfNWphAX45Gl6uOtsZPqZUIysr29DqiQY3uuoIUjfJ4DI2euOY1M+L0rCk0NtYglZ7KxHBUGiLAddtOStjFzfW6E/O1aKRjO/VJ553MxH1Wyvf01cQvwH4vn8eLvh7yqS+CPl8OdAjipiIacy5NONMheboikv0UpWG8f4eTkpLEBfMZDKeHc5T0bTYGm3W3c/WyTWsTFvSp5QkmmbTAioJBQLB3ifsJYsAmQY6MTrDVN/astnkRJM+i3ph8JX25/kTBL0f1WINDXvY/rCirctFFQSWGY+jzzzceoH8u5rVLqv+hDaz/aF5CEp8DBZ5129zFR5O7P7k8HdKdyaz9nMfocPw3L/cco0cLobAEFD2pI1rQhO22i99xpIiif7hVydmTLJG3ut/8KiwfERfjK67/c1WQlBR9CyFS/0hc3TZsFxsx4eoThGRVBV3XzZ01W1H3SOB6eRXtBdiRZap5pBzXUY7jDBov7rs6hPm5A6A79HYZ+F9ZGw3wWBPvWv+dAjyD6bzS28kU96VNK+HjKv1tUmT8/3iN80QpWO/+X3063SbojRMUYBHkPXrz9olfzjOt9rCnmZnbJIS4ogMaJ/txyGFXAd9xH//+HJUPAPngw3QYEWqrJAm0IoYq9njruAALTZWP6joHfzDNhbuFIPlXTr7dPyFei7aRZwhvAXxBFwh7qX3gYf0g/EESlI7b9aQzfFB0ndoMLDNcNOMpi+LVz9prus7NGgl2MoJPk6vBqRAnXPVK42PZxqJ2hgLP70+RPcgBgXJfD95KGNnR1BiEJt9JZ+n9PTCQtDGpScYnMJzryam6VM/i0cnpM6JuNp0DWdHFZpt9LLtGhzw9/ImqlEcSGhiCvN3P43nFfalfw1fPaGBer4XEjU/X9axm7Ctua9Ql00GYg1q4vKpX9xZA8ij2Os3Pn61PyyjkyUUVkOaMl",
+        "SecretPaths": [
+            "user.password",
+            "user.secret",
+            "__ia_config__.SecretStores.vault.token"
+        ],
+        "SecretStores": {
+            "my-vault": {
+                "Type": "vault",
+                "Endpoint": "http://localhost:8200",
+                "Token": "root"
+            }
+        },
+        "SecretReferences": {
+            "pw": {
+                "SecretStore": "my-vault",
+                "Name": "kv/foo",
+                "Key": "bar"
+            }
+        },
+        "PathReferenceMapping": {
+            "remotePW": "pw"
+        },
+        "Recipients": {
+            "demo": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTSHhGYxR918LTbwbRQEQMNqp9RO3x3tQ3Y/keBl3mp/4HLkxmqy5nU1eBZbnIU3PFEcdJUENmFkC38QsNBsGAf8SmLHqqcUrtOyIZUEjMStMTS4M4CI2Oo3up5XZxAbk2y+/Ll9izJkgmbHkdeosByu8719WavhzclgLD1YtTQp1oyoO/21EG/9twWi+i9nkorbhs+QUtwOzfZ2NHcNUI17jvLJhEYhVmTD79tqYeYkvZcMnF3ouwY6ONaruyx21krEvK20tn/miezfUVf8DQiWKjsGGUqSMwFJhh4skfw9JNTkuzg2VTr+G4MC4eQrJphq4G5guLTWLWgQ3hgVpuciTr3V4N/fzqNNa3jomppw04ksjgwikcNruZOxc3JTamW6ri+AjCMp5feeN22TiLNoXztI2Q+0lTlf+zNGJ8qWbPIJnwvUfVpyHAqdAXVpuOH0mQBYr8LPJvv16O52zfUoyHToJTZ8ymo2tgBLOvzHO3jV+r3UjX67E3pifuLBk= marcel@marcel-XPS-15-7590",
+            "marcel": "github:mheers"
+        }
+    },
+    "user": {
+        "password": "i12AYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IHNjcnlwdCBIWFJqTW1WaEhiRkRjckx0Q2VRWVRRIDE4CkFSQ0ZTZjJFSTJ5aERLVzdtZmttN0pxZmttWXhQckhnTUhaa2ZkMDNQYTAKLS0tIGQ5bWdld2N0ZllrQWdZSzQ0U29CZHA5ZW10SVgvSzRSeUEwbE5IYWk4bW8K6bCyMCdUaETtNEf7NgqA6wH9LFnnf3MrXcoNDIyGmP/m5nPdW+kD",
+        "secret": "i12AYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IHNjcnlwdCBxc3VqZXpWVUJROUZuSXkybHJwaUpnIDE4ClJDNk83TVd1Qmh4dzE5TG1lZXkrUFhFbHlJeUtkYXlWSEw4SmpjS1B3ZkkKLS0tIGhIdWN5QUxIS0ptek1NcDExSllYMWhOdkMvVS9xR25XbkdMQ1BCRC9uVlkKbTjEyQbz9ymG7VDLWgou5znIVleoPinzK+wj5BcIiF0knm79m8AD"
+    }
+}

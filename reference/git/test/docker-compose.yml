@@ -1,0 +1,13 @@
+version: "3"
+services:
+  git:
+    image: mheers/git-server
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DISABLE_REGISTRATION=TRUE
+      - INSTALL_LOCK=TRUE
+    volumes:
+      - ./init.sh:/bin/init.sh:ro
+      - ./ssh:/ssh:ro
+      - ./data:/import:ro

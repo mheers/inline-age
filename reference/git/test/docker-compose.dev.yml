@@ -1,0 +1,6 @@
+version: '3'
+services:
+  git:
+    ports:
+      - "2244:22"
+      - "3000:3000"
