@@ -50,7 +50,7 @@ var (
 				chiffre, err = crypt.Encrypt(plaintext, recipients)
 			} else {
 				if password == "" {
-					fmt.Print("Enter password: ")
+					fmt.Fprint(os.Stderr, "Enter password: ")
 					tty, err := os.Open("/dev/tty")
 					if err != nil {
 						return fmt.Errorf("error opening /dev/tty: %v", err)
@@ -62,7 +62,7 @@ var (
 					if err != nil {
 						return fmt.Errorf("error reading password: %v", err)
 					}
-					fmt.Println()
+					fmt.Fprint(os.Stderr)
 					password = strings.TrimSpace(string(inputPassword))
 					if password == "" {
 						return fmt.Errorf("password cannot be empty")
