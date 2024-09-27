@@ -36,5 +36,5 @@ var (
 )
 
 func init() {
-	initFileCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", recipientFileDefault, "")
+	initFileCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", "", "")
 }

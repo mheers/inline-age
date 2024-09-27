@@ -1,6 +1,6 @@
 module github.com/mheers/inline-age
 
-go 1.21
+go 1.23
 
 require (
 	filippo.io/age v1.1.1

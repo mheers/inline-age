@@ -66,5 +66,5 @@ var (
 )
 
 func init() {
-	encryptMultipleCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", recipientFileDefault, "")
+	encryptMultipleCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", "", "")
 }

@@ -48,7 +48,7 @@ var (
 )
 
 func init() {
-	reencryptFileCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", recipientFileDefault, "if not set the recipients defined in the secret file will be used")
+	reencryptFileCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", "", "if not set the recipients defined in the secret file will be used")
 	reencryptFileCmd.PersistentFlags().StringVarP(&identityFile, "identity-file", "i", helpers.PrivateKeyPath(), "")
 	reencryptFileCmd.PersistentFlags().StringArrayVarP(&paths, "paths", "p", []string{}, "")
 }

@@ -4,17 +4,18 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/mheers/inline-age/crypt"
 	"github.com/mheers/inline-age/helpers"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 var (
-	recipients           []string
-	recipientFile        string
-	recipientFileDefault string
-	password             string
+	recipients    []string
+	recipientFile string
+	password      string
 
 	encryptCmd = &cobra.Command{
 		Use:     "encrypt [plaintext | - for stdin]",
@@ -43,12 +44,31 @@ var (
 			var chiffre string
 			var err error
 
-			if password != "" {
-				chiffre, err = crypt.EncryptWithPassword(plaintext, password)
+			if recipientFile != "" {
+				chiffre, err = crypt.EncryptStringWithRecipientFile(plaintext, recipientFile)
 			} else if len(recipients) > 0 {
 				chiffre, err = crypt.Encrypt(plaintext, recipients)
 			} else {
-				chiffre, err = crypt.EncryptStringWithRecipientFile(plaintext, recipientFile)
+				if password == "" {
+					fmt.Print("Enter password: ")
+					tty, err := os.Open("/dev/tty")
+					if err != nil {
+						return fmt.Errorf("error opening /dev/tty: %v", err)
+					}
+					defer tty.Close()
+
+					fd := int(tty.Fd())
+					inputPassword, err := term.ReadPassword(fd)
+					if err != nil {
+						return fmt.Errorf("error reading password: %v", err)
+					}
+					fmt.Println()
+					password = strings.TrimSpace(string(inputPassword))
+					if password == "" {
+						return fmt.Errorf("password cannot be empty")
+					}
+				}
+				chiffre, err = crypt.EncryptWithPassword(plaintext, password)
 			}
 
 			if err != nil {
@@ -63,6 +83,6 @@ var (
 
 func init() {
 	encryptCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "")
-	encryptCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", recipientFileDefault, "")
+	encryptCmd.PersistentFlags().StringVarP(&recipientFile, "recipient-file", "r", "", "")
 	encryptCmd.PersistentFlags().StringArrayVarP(&recipients, "recipients", "R", []string{}, "")
 }

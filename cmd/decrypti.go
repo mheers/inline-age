@@ -13,11 +13,11 @@ import (
 var (
 	identityFile string
 
-	decryptCmd = &cobra.Command{
-		Use:     "decrypt [chiffre]",
-		Short:   "decrypts a string with an identity file or a password",
+	decryptICmd = &cobra.Command{
+		Use:     "decrypti [chiffre]",
+		Short:   "decrypts a string with an identity file",
 		Long:    ``,
-		Aliases: []string{"d"},
+		Aliases: []string{"di"},
 		RunE: func(cmd *cobra.Command, args []string) error {
 			helpers.SetLogLevel(logLevelFlag)
 
@@ -36,13 +36,7 @@ var (
 				}
 			}
 
-			var plaintext string
-			var err error
-			if password != "" {
-				plaintext, err = crypt.DecryptFromPassword(chiffre, password)
-			} else {
-				plaintext, err = crypt.DecryptFromIdentityFile(chiffre, identityFile)
-			}
+			plaintext, err := crypt.DecryptFromIdentityFile(chiffre, identityFile)
 			if err != nil {
 				return err
 			}
@@ -54,6 +48,5 @@ var (
 )
 
 func init() {
-	decryptCmd.PersistentFlags().StringVarP(&identityFile, "identity-file", "i", helpers.PrivateKeyPath(), "")
-	decryptCmd.PersistentFlags().StringVarP(&password, "password", "p", "", "")
+	decryptICmd.PersistentFlags().StringVarP(&identityFile, "identity-file", "i", helpers.PrivateKeyPath(), "")
 }
